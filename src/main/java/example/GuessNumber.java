@@ -34,4 +34,32 @@ public class GuessNumber {
         result = String.format("%dA%dB", countA, countB);
         return result;
     }
+
+    public boolean isLegalGuessNum(int[] number){
+        if(number.length != 4){
+            return false;
+        }
+        for(int index = 0; index < number.length; index++){
+            if(number[index] < 0 || number[index] > 9){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public int[] inputFromScreen(){
+        int inputGuessNumber[] = new int[4];
+        Scanner sc = new Scanner(System.in);
+        for(int i = 0; i < inputGuessNumber.length; i++){
+            inputGuessNumber[i] = sc.nextInt();
+        }
+        return inputGuessNumber;
+    }
+
+    public static void main(String[] args) {
+        GuessNumber gn = new GuessNumber();
+        int arr[] = gn.inputFromScreen();
+        gn.isLegalGuessNum(arr);
+
+    }
 }
